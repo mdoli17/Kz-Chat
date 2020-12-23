@@ -8,22 +8,28 @@
 import UIKit
 
 class UserProfileViewController: UIViewController {
-
+    
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
+    
+    var viewedUser: KZUser!
+    
+    static func makeUserProfile(newUser: KZUser) -> UserProfileViewController {
+        let newVC = UserProfileViewController(nibName: "UserProfileViewController", bundle: nil)
+        newVC.viewedUser = newUser
+        return newVC
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        usernameField.text = viewedUser?.getUserName()
+        emailField.text = viewedUser?.getUserEmail()
+        emailField.isUserInteractionEnabled = false
+        
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func onUsernameChanged(_ sender: Any) {
+        
     }
-    */
-
+    
 }

@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserProfileViewController" customModule="Kz_Chat" customModuleProvider="target">
             <connections>
+                <outlet property="emailField" destination="NPo-FR-cbc" id="yTa-cD-ayi"/>
+                <outlet property="usernameField" destination="qtL-iv-Qxh" id="MMH-Eo-bgY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,6 +27,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="onUsernameChanged:" destination="-1" eventType="editingDidEnd" id="wWa-st-xKi"/>
+                    </connections>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NPo-FR-cbc">
                     <rect key="frame" x="0.0" y="456" width="414" height="50"/>

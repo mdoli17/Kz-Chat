@@ -15,6 +15,8 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var createUser: UIButton!
     
+    let db = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -44,13 +46,23 @@ class EntryViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EntryToHome" {
+            let curUserEmail = Auth.auth().currentUser?.email
             let vc = segue.destination as! HomeViewController
-            let db = Firestore.firestore()
+            
             db.collection("Users").getDocuments() {querySnapshot, error in
                 if let error = error {
                     print("Could't Fetch Data")
+                    print(error)
                 } else {
-                    print(querySnapshot!.documents.count)
+                    for doc in querySnapshot!.documents {
+                        let curData = doc.data()
+                        let logedEmail = curData["useremail"] as! String
+                        if logedEmail == curUserEmail {
+                            let logedName = curData["username"] as! String
+                            let logedUser = KZUser(name: logedName, email: logedEmail)
+                            vc.activeUser = logedUser
+                        }
+                    }
                 }
             }
         }

@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 class RegisterViewController: UIViewController {
+    @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repeatField: UITextField!
@@ -22,7 +23,7 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func onSignPressed(_ sender: Any) {
-        if let email = emailField.text, let password = passwordField.text, let repeated = repeatField.text {
+        if let email = emailField.text, let password = passwordField.text, let repeated = repeatField.text, let username = usernameField.text {
             if repeated != password {
                 // TODO: Make some kinda message for the user to know
                 return
@@ -33,8 +34,8 @@ class RegisterViewController: UIViewController {
                     // Make some kinda message for the user to know
                 }
                 else {
-                    self.newUser = KZUser(name: "", email: email, password: password)
-                    self.db.collection("Users").addDocument(data: ["username": self.newUser?.getUserName(), "useremail": email])
+                    self.newUser = KZUser(name: username, email: email)
+                    self.db.collection("Users").addDocument(data: ["username": self.newUser!.getUserName(), "useremail": email])
                     self.performSegue(withIdentifier: "RegisterToHome", sender: self)
 
                 }

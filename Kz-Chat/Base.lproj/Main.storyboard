@@ -74,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="1358" y="149"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="SGc-fn-WKx">
             <objects>
                 <viewController id="weA-OO-8UN" customClass="HomeViewController" customModule="Kz_Chat" customModuleProvider="target" sceneMemberID="viewController">
@@ -82,18 +82,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HomeView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9s-S0-hKE">
-                                <rect key="frame" x="166" y="438" width="82" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9DR-PH-S3k">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HKR-3s-WUV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9DR-PH-S3k" firstAttribute="leading" secondItem="HKR-3s-WUV" secondAttribute="leading" id="2A0-lW-mHa"/>
+                            <constraint firstItem="9DR-PH-S3k" firstAttribute="top" secondItem="HKR-3s-WUV" secondAttribute="top" id="PMx-7O-kW7"/>
+                            <constraint firstItem="9DR-PH-S3k" firstAttribute="trailing" secondItem="HKR-3s-WUV" secondAttribute="trailing" id="auE-EZ-caj"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="fKS-Mb-ioz"/>
+                    <navigationItem key="navigationItem" title="Home" largeTitleDisplayMode="never" id="fKS-Mb-ioz">
+                        <barButtonItem key="leftBarButtonItem" title="Me" id="cv2-jR-iS3">
+                            <connections>
+                                <action selector="onMyProfilePressed:" destination="weA-OO-8UN" id="Qg8-2u-DIq"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="FriendRequests" id="8BZ-fb-TdB"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="9DR-PH-S3k" id="oAM-pm-qT6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Whk-1b-iMB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,18 +154,29 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dhe-dB-aEk">
+                                <rect key="frame" x="0.0" y="344" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hry-qd-055"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LSo-ob-z3m"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IBX-n0-6cP" firstAttribute="top" secondItem="NBI-o8-InM" secondAttribute="bottom" constant="85" id="1qp-Bq-k2C"/>
+                            <constraint firstItem="S7R-fp-1Mn" firstAttribute="top" secondItem="Dhe-dB-aEk" secondAttribute="bottom" constant="30" id="2S1-zb-bHt"/>
                             <constraint firstItem="Gel-cP-9Xh" firstAttribute="leading" secondItem="LSo-ob-z3m" secondAttribute="leading" id="3hy-vT-Anm"/>
                             <constraint firstItem="LSo-ob-z3m" firstAttribute="trailing" secondItem="Gel-cP-9Xh" secondAttribute="trailing" id="5Ml-2U-1hD"/>
                             <constraint firstItem="NBI-o8-InM" firstAttribute="leading" secondItem="LSo-ob-z3m" secondAttribute="leading" id="H7H-XZ-EEA"/>
+                            <constraint firstItem="LSo-ob-z3m" firstAttribute="trailing" secondItem="Dhe-dB-aEk" secondAttribute="trailing" id="Tbg-b5-mWl"/>
                             <constraint firstItem="LSo-ob-z3m" firstAttribute="bottom" secondItem="IBX-n0-6cP" secondAttribute="bottom" constant="97" id="a2n-ua-uTO"/>
                             <constraint firstItem="IBX-n0-6cP" firstAttribute="centerX" secondItem="eKy-RF-Qf6" secondAttribute="centerX" id="d92-nJ-eoo"/>
                             <constraint firstItem="S7R-fp-1Mn" firstAttribute="leading" secondItem="LSo-ob-z3m" secondAttribute="leading" id="fcu-bm-Acf"/>
                             <constraint firstItem="Gel-cP-9Xh" firstAttribute="top" secondItem="S7R-fp-1Mn" secondAttribute="bottom" constant="30" id="gcY-wW-66o"/>
+                            <constraint firstItem="Dhe-dB-aEk" firstAttribute="leading" secondItem="LSo-ob-z3m" secondAttribute="leading" id="onE-gP-GHh"/>
                             <constraint firstItem="NBI-o8-InM" firstAttribute="top" secondItem="Gel-cP-9Xh" secondAttribute="bottom" constant="26" id="rJg-zr-oOh"/>
                             <constraint firstItem="LSo-ob-z3m" firstAttribute="trailing" secondItem="NBI-o8-InM" secondAttribute="trailing" id="raA-eu-H3H"/>
                             <constraint firstItem="LSo-ob-z3m" firstAttribute="trailing" secondItem="S7R-fp-1Mn" secondAttribute="trailing" id="zjj-42-Yu5"/>
@@ -165,6 +188,7 @@
                         <outlet property="passwordField" destination="Gel-cP-9Xh" id="NbK-jQ-ZIB"/>
                         <outlet property="repeatField" destination="NBI-o8-InM" id="KxM-aj-rCu"/>
                         <outlet property="signupButton" destination="IBX-n0-6cP" id="R5l-6z-o2c"/>
+                        <outlet property="usernameField" destination="Dhe-dB-aEk" id="396-g3-3kV"/>
                         <segue destination="weA-OO-8UN" kind="push" identifier="RegisterToHome" id="llI-pO-UjD"/>
                     </connections>
                 </viewController>
@@ -192,7 +216,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WVh-BF-isW"/>
+        <segue reference="llI-pO-UjD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
